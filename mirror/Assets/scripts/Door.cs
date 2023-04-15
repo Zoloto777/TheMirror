@@ -1,10 +1,12 @@
-
+using Unity.AI.Navigation;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Door : MonoBehaviour
 {
     [SerializeField] Transform cam;
     [SerializeField] float ActiveDistance;
+    [SerializeField] private NavMeshSurface surface;
 
     public Animator door;
     public bool IsOpen;
@@ -23,8 +25,7 @@ public class Door : MonoBehaviour
         {
             return;
         }
-
-        if(IsOpen)
+        if (IsOpen)
         {
             DoorClosed();
         }
@@ -32,21 +33,20 @@ public class Door : MonoBehaviour
         {
             DoorOpen();
         }
+    
 
     }
 
     private void DoorOpen()
     {
         IsOpen = true;
+
     }
 
+        
     private void DoorClosed()
     {
         IsOpen = false;
     }
 
-    private void OnDrawGizmos()
-    {
-       
-    }
 }
