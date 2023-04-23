@@ -16,3 +16,4 @@ MonoBehaviour:
   - Assets/side.prefab
   - Assets/Models/Levels/Level1.fbx
   - Assets/Prefabs/Interactibles/Door.prefab
+  - Assets/Prefabs/UI/HealthCanvas.prefab

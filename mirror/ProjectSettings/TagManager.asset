@@ -23,7 +23,7 @@ TagManager:
   - UI
   - item
   - darkness
-  - Weapon
+  - ViewModel
   - AI
   - Test
   - DoorTrigger
