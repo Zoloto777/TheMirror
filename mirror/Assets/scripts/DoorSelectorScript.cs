@@ -1,91 +1,70 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DoorSelectorScript : MonoBehaviour
 {
-    public GameObject[] DoorsList; //put all your valves here from the inspector
-    List<Animator> animatorList = new List<Animator>();
+    [Header("Interaction Variables")]
+    [Space(5)]
     [SerializeField] Transform cam;
+    [Space(2)]
     [SerializeField] float ActiveDistance;
 
+    private NavMeshObstacle obstacle;
+    private Animator animator;
 
-    public Animator door;
+    [Header("Door Variable")]
+    [Space(5)]
     public bool IsOpen;
-    void Start()
+
+    void Awake()
     {
-        
-        if (DoorsList.Length >= 1) //make sure list isn't empty
-        {
-            for (int i = 0; i < DoorsList.Length; i++) //NOTE: do "valvesList.Length - 1" instead, if you get index out of range error
-            {
-                animatorList.Add(DoorsList[i].GetComponent<Animator>()); //fill up your list with animators components from valve gameobjects
-                animatorList[i].enabled = false; //turn off each animator component at the start
-            }
-        }
-        else
-        {
-            return; //if list is empty do nothing
-        }
+        this.obstacle = GetComponent<NavMeshObstacle>();
+        this.animator= GetComponent<Animator>();
     }
-    
-    public void FindValve(string DoorName)
+
+    public void FindDoor(string DoorName)
     {
-        if (DoorsList.Length >= 1)
+        if(animator.gameObject.name == DoorName) 
         {
-            for (int i = 0; i < DoorsList.Length; i++) //NOTE: do "valvesList.Length - 1" instead, if you get index out of range error
+            if (IsOpen)
             {
-                if (DoorsList[i].name == DoorName)
-                {
-                    
-                   
-                    if (IsOpen)
-                    {
-                        DoorClosed();
-                    }
-                    else
-                    {
-                        DoorOpen();
-                    }
-
-
-                }
+                DoorClosed();
             }
-        }
-        else
-        {
-            return;
+            else
+            {
+                DoorOpen();
+            }
         }
     }
 
     private void DoorOpen()
     {
         IsOpen = true;
-
+        this.obstacle.enabled = false;
     }
 
 
     private void DoorClosed()
     {
         IsOpen = false;
+        this.obstacle.enabled = true;
     }
 
     public void Update()
     {
-        door.SetBool("IsOpen", IsOpen);
+        animator.SetBool("IsOpen", IsOpen);
         bool active = Physics.Raycast(cam.position, cam.TransformDirection(Vector3.forward), out RaycastHit hit, ActiveDistance);
 
-        if (!Input.GetKeyDown(KeyCode.E) || !active)
-        {
-            return;
-        }
-
-        if (!hit.transform.CompareTag("Door"))
-        {
-            return;
-        }
-        string valveGameobjectName = hit.transform.name;
-            FindValve(valveGameobjectName);
+        if (Input.GetKeyDown(KeyCode.E) && active)
+        {          
+            if (hit.transform.CompareTag("Door"))
+            {
+              string GameobjectName = hit.transform.parent.name;
+              FindDoor(GameobjectName);               
+            }
         }
     }
+}
 
