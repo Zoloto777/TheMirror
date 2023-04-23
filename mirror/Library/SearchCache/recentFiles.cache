@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recentFilesPaths:
   - Assets/side.prefab
+  - Assets/Models/Levels/Level1.fbx
+  - Assets/Prefabs/Interactibles/Door.prefab
