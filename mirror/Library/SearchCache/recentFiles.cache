@@ -17,3 +17,6 @@ MonoBehaviour:
   - Assets/Models/Levels/Level1.fbx
   - Assets/Prefabs/Interactibles/Door.prefab
   - Assets/Prefabs/UI/HealthCanvas.prefab
+  - Assets/Scenes/Story/Level1.unity
+  - Assets/Scenes/DOORscene.unity
+  - Assets/scripts/DoorSelectorScript.cs

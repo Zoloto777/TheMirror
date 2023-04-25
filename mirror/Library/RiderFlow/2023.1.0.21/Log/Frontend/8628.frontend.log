@@ -1,0 +1,14 @@
+﻿01:02:59.452 |I| Launcher                       | :1                             | Checking if build hasn't expired.
+01:02:59.535 |I| Launcher                       | :1                             | Starting RiderFlow frontend
+01:02:59.547 |V| JetBrains.Threading.ByteBufferAsyncProcessor.ServerSocket-UnityServer-Sender | :1                             | PAUSE ('Disconnected') :: state=Initialized
+01:02:59.556 |V| protocol.INIT                  | :1                             | Creating server socket on endpoint: 
+01:02:59.649 |V| protocol.INIT                  | :1                             | Server socket created, listening started on endpoint: 127.0.0.1:0
+01:02:59.649 |V| JetBrains.Rd.Impl.SocketWire+Server | :1                             | ServerSocket-UnityServer : started, port: 61397
+01:02:59.651 |V| JetBrains.Rd.Impl.SocketWire+Server | ServerSocket-UnityServer-Receiver:36 | ServerSocket-UnityServer : accepting, port: 61397
+01:03:39.712 |I| Launcher                       | :1                             | Creating Root ScriptableObject
+01:03:39.842 |V| JetBrains.RiderFlow.Core.Analytics.RiderFlowAnalytics | :1                             | Didn't find 'analytics' in C:\Users\ersul\AppData\Roaming\RiderFlow. Creating new 'analytics' file.
+01:03:39.842 |V| JetBrains.RiderFlow.Core.Analytics.RiderFlowAnalytics | :1                             | Generated new uuid. Saved it to 'analytics' in C:\Users\ersul\AppData\Roaming\RiderFlow.
+01:03:39.842 |I| Launcher                       | :1                             | Subscribing for events
+01:03:53.393 |I| JetBrains.RiderFlow.Core.Core.Caches.AssetPathCache.AssetPathService | :1                             | Started building search cache
+01:03:53.398 |I| JetBrains.RiderFlow.Core.Core.Caches.AssetPathCache.AssetPathService | :1                             | Finished building search cache
+01:03:53.986 |V| Launcher                       | :1                             | Ready!
