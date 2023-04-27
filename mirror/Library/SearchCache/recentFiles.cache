@@ -20,3 +20,4 @@ MonoBehaviour:
   - Assets/Scenes/Story/Level1.unity
   - Assets/Scenes/DOORscene.unity
   - Assets/scripts/DoorSelectorScript.cs
+  - Assets/scripts/PlayerMovement.cs

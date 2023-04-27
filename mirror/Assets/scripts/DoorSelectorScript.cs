@@ -6,42 +6,20 @@ using UnityEngine.AI;
 
 public class DoorSelectorScript : MonoBehaviour
 {
-    [Header("Interaction Variables")]
+    [Header("Door Variable")]
     [Space(5)]
-    [SerializeField] Transform cam;
-    [Space(2)]
-    [SerializeField] float ActiveDistance;
+    [SerializeField] TextMeshProUGUI text;
+    [SerializeField] private bool IsOpen;
 
     private NavMeshObstacle obstacle;
     private Animator animator;
-    private BoxCollider BoxCollider;
-    public TextMeshProUGUI text;
-
-    [Header("Door Variable")]
-    [Space(5)]
-    public bool IsOpen;
+    private bool InTrigger;
 
     void Awake()
     {
        
         this.obstacle = GetComponent<NavMeshObstacle>();
         this.animator = GetComponent<Animator>();
-        this.BoxCollider = GetComponent<BoxCollider>();
-    }
-
-    public void FindDoor(string DoorName)
-    {
-        if (animator.gameObject.tag == DoorName)
-        {
-            if (IsOpen)
-            {
-                DoorClosed();
-            }
-            else
-            {
-                DoorOpen();
-            }
-        }
     }
 
     private void DoorOpen()
@@ -60,37 +38,32 @@ public class DoorSelectorScript : MonoBehaviour
     public void Update()
     {
         animator.SetBool("IsOpen", IsOpen);
-        //bool active = Physics.Raycast(cam.position, cam.TransformDirection(Vector3.forward), out RaycastHit hit, ActiveDistance);
-
-        //if (Input.GetKeyDown(KeyCode.E) && active)
-        //{
-        //    if (hit.transform.CompareTag("Door"))
-        //    {
-        //        string GameobjectName = hit.transform.parent.name;
-        //        FindDoor(GameobjectName);
-        //    }
-        //}
-        
-    }
-
-    public void OnTriggerStay()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (InTrigger)
         {
-            Debug.Log(BoxCollider.name);
-            string GameobjectName = BoxCollider.name;
-            FindDoor(GameobjectName);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (IsOpen)
+                {
+                    DoorClosed();
+                }
+                else
+                {
+                    DoorOpen();
+                }
+            }
         }
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter()
     {
         text.gameObject.SetActive(true);
+        InTrigger = true;
     }
 
-    public void OnTriggerExit(Collider other)
+    public void OnTriggerExit()
     {
         text.gameObject.SetActive(false);
+        InTrigger = false;
     }
 }
 
