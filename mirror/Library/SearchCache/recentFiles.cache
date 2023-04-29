@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recentFilesPaths:
-  - Assets/side.prefab
-  - Assets/Models/Levels/Level1.fbx
-  - Assets/Prefabs/Interactibles/Door.prefab
   - Assets/Prefabs/UI/HealthCanvas.prefab
   - Assets/Scenes/Story/Level1.unity
   - Assets/Scenes/DOORscene.unity
   - Assets/scripts/DoorSelectorScript.cs
   - Assets/scripts/PlayerMovement.cs
+  - Assets/KeyScript.cs
+  - Assets/scripts/EndScript.cs
+  - Assets/scripts/PickUpItems.cs
+  - Assets/Plugins/FMOD/src/RuntimeUtils.cs
+  - Assets/scripts/KeyScript.cs
