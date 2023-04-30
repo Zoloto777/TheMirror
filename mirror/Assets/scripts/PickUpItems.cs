@@ -30,14 +30,6 @@ public class PickUpItems : MonoBehaviour
         
         if (!hit.transform.CompareTag("item"))
         {
-            if (hit.transform.CompareTag("Item-usable"))
-            {
-                hit.transform.gameObject.SetActive(false);
-                if (hit.transform.name == "Key") 
-                {
-
-                }
-            }
             return;
         }
 

@@ -1,20 +1,50 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class DoorScript : MonoBehaviour
 {
-    [Header("Door Variable")]
+    [Header("UI")]
     [Space(5)]
     [SerializeField] TextMeshProUGUI text;
-    [SerializeField] private bool IsOpen;
+
+    [Header("Transforms & Scripts")]
+    [Space(5)]
+    [SerializeField] private KeyScript keyScript;
+    [Space(2)]
+    [SerializeField] private Transform DoorHolder;
+
+    [Header("Array")]
+    [Space(5)]
+    [SerializeField] private Transform[] DoorArray;
 
     private NavMeshObstacle obstacle;
     private Animator animator;
     private bool InTrigger;
+    private bool IsOpen;
 
+    public Dictionary<string, bool> DoorNames = new Dictionary<string, bool>();
+
+    private void Start()
+    {
+        SetDoors();
+    }
+
+    private void SetDoors()
+    {
+        DoorArray = new Transform[DoorHolder.childCount];
+        for (int i = 0; i < DoorHolder.childCount; i++)
+        {
+
+            DoorArray[i] = DoorHolder.GetChild(i);
+
+            DoorNames.Add(DoorArray[i].name, true);
+        }
+    }
     void Awake()
     {
        
@@ -40,20 +70,26 @@ public class DoorScript : MonoBehaviour
         animator.SetBool("IsOpen", IsOpen);
         if (InTrigger)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            for (int i = 0; i < keyScript.Keys.Length; ++i)
             {
-                if (IsOpen)
+                if (keyScript.Triggers[keyScript.Keys[i].name] == DoorNames[DoorArray[i].name] && DoorArray[i].name == transform.name)
                 {
-                    DoorClosed();
-                }
-                else
-                {
-                    DoorOpen();
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        if (IsOpen)
+                        {
+                            DoorClosed();
+                        }
+                        else
+                        {
+                            DoorOpen();
+                        }
+                    }
                 }
             }
         }
+        
     }
-
     public void OnTriggerEnter()
     {
         text.gameObject.SetActive(true);
@@ -65,5 +101,6 @@ public class DoorScript : MonoBehaviour
         text.gameObject.SetActive(false);
         InTrigger = false;
     }
+
 }
 
