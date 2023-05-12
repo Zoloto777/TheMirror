@@ -68,9 +68,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f7324a62dd5c5d408e980251db017f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActiveDistance: 2
   text: {fileID: 0}
-  IsOpen: 0
+  keyScript: {fileID: 0}
+  DoorHolder: {fileID: 0}
+  DoorArray: []
 --- !u!208 &3027784164133552001
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -106,7 +107,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.32, y: 1.93, z: 1.28}
+  m_Size: {x: 1.61, y: 1.93, z: 1.28}
   m_Center: {x: 0, y: 0.1, z: -0.27}
 --- !u!1001 &3659479766113632924
 PrefabInstance:

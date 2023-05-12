@@ -410,6 +410,7 @@
 "Assets/scripts/ItemSway.cs"
 "Assets/scripts/ItemSwitch.cs"
 "Assets/scripts/KeyScript.cs"
+"Assets/scripts/LocatorScript.cs"
 "Assets/scripts/MainCompass.cs"
 "Assets/scripts/MapManager.cs"
 "Assets/scripts/MausLook.cs"

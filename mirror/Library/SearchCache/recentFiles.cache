@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recentFilesPaths:
-  - Assets/Scenes/Story/Level1.unity
+  - Assets/scripts/PlayerInteraction.cs
+  - Assets/scripts/OpenInvetory.cs
+  - Assets/scripts/PanicMeter.cs
   - Assets/Scenes/DOORscene.unity
-  - Assets/scripts/DoorSelectorScript.cs
-  - Assets/scripts/PlayerMovement.cs
-  - Assets/KeyScript.cs
-  - Assets/scripts/EndScript.cs
-  - Assets/scripts/PickUpItems.cs
-  - Assets/Plugins/FMOD/src/RuntimeUtils.cs
+  - Assets/scripts/LocatorScript.cs
+  - Assets/Scenes/Story/Level1/NavMesh-FLOOR_1_FBX (1).asset
   - Assets/scripts/DoorScript.cs
-  - Assets/scripts/KeyScript.cs
+  - Assets/Scenes/TESTscene.unity
+  - Assets/Textures2D/UI/Inventory/UI_The_Mirror.png
+  - Assets/Scenes/Story/Level1.unity
