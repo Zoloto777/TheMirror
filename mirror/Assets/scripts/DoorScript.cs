@@ -6,48 +6,31 @@ using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class DoorScript : MonoBehaviour
 {
     [Header("UI")]
     [Space(5)]
-    [SerializeField] TextMeshProUGUI text;
-
-    [Header("Transforms & Scripts")]
-    [Space(5)]
-    [SerializeField] private KeyScript keyScript;
-    [Space(2)]
-    [SerializeField] private Transform DoorHolder;
-
-    [Header("Array")]
-    [Space(5)]
-    [SerializeField] private Transform[] DoorArray;
+    
+    public bool IsOpen;
 
     private NavMeshObstacle obstacle;
     private Animator animator;
     private bool InTrigger;
-    private bool IsOpen;
+    
 
-    public Dictionary<string, bool> DoorNames = new Dictionary<string, bool>();
+    public Inventory Inventory;
 
-    private void Start()
+    public enum LockType
     {
-        SetDoors();
+        RedDoor,
+        GreenDoor,
+        YellowDoor
     }
-
-    private void SetDoors()
-    {
-        DoorArray = new Transform[DoorHolder.childCount];
-        for (int i = 0; i < DoorHolder.childCount; i++)
-        {
-
-            DoorArray[i] = DoorHolder.GetChild(i);
-
-            DoorNames.Add(DoorArray[i].name, true);
-        }
-    }
+    [SerializeField] LockType lockType;
     void Awake()
     {
-       
+
         this.obstacle = GetComponent<NavMeshObstacle>();
         this.animator = GetComponent<Animator>();
     }
@@ -68,37 +51,36 @@ public class DoorScript : MonoBehaviour
     public void Update()
     {
         animator.SetBool("IsOpen", IsOpen);
-        if (InTrigger)
+        if (!InTrigger)
         {
-            for (int i = 0; i < keyScript.Keys.Length; ++i)
+            return;
+        }
+
+        foreach (KeyScript key in Inventory.Keys)
+        {
+            if (key.lockType == lockType)
             {
-                if (keyScript.Triggers[keyScript.Keys[i].name] == DoorNames[DoorArray[i].name] && DoorArray[i].name == transform.name)
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (IsOpen)
                     {
-                        if (IsOpen)
-                        {
-                            DoorClosed();
-                        }
-                        else
-                        {
-                            DoorOpen();
-                        }
+                        DoorClosed();
+                    }
+                    else
+                    {
+                        DoorOpen();
                     }
                 }
             }
         }
-        
     }
     public void OnTriggerEnter()
-    {
-        text.gameObject.SetActive(true);
+    {     
         InTrigger = true;
     }
 
     public void OnTriggerExit()
     {
-        text.gameObject.SetActive(false);
         InTrigger = false;
     }
 

@@ -10,7 +10,7 @@ public class MoveItemToSide : MonoBehaviour
     {
         if (transform.childCount == 0) return;
 
-        if (transform.name == "RightHand")
+        if (transform.CompareTag("RightHand"))
         {
             transform.GetChild(0).localPosition = new Vector3(1, transform.GetChild(0).localPosition.y, transform.GetChild(0).localPosition.z);
         }

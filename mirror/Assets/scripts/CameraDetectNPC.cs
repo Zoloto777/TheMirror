@@ -53,7 +53,8 @@ public class CameraDetectNPC : MonoBehaviour
         }
         else
         {
-            agent.isStopped = false; 
+            agent.isStopped = false;
         }
+
     }
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 public class OpenInventory : MonoBehaviour
 {
     public GameObject inventory;
+    public GameObject Crosshair;
     private bool inventoryIsClosed;
 
     void Start()
@@ -18,12 +19,14 @@ public class OpenInventory : MonoBehaviour
             {
                 Cursor.lockState = CursorLockMode.Confined;
                 inventory.SetActive(true);
+                Crosshair.SetActive(false);
                 inventoryIsClosed = false;
             }
             else
             {
                 Cursor.lockState = CursorLockMode.Locked;
                 inventory.SetActive(false);
+                Crosshair.SetActive(true);
                 inventoryIsClosed = true;
             }
         }

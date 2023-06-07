@@ -1,27 +1,26 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndScript : MonoBehaviour
 {
     public PickUpItems items;
-    public GameObject TheEnd;
-   public GameObject TheEndScreen;
-    public DoorScript selectorScript;
+    public GameObject TheEndTrigger;
 
     private void Update()
     {
         if (!items.strings.Any(i => i != items.strings[0]))
         {
-           TheEnd.SetActive(true);
+            TheEndTrigger.SetActive(true);
         }
     }
 
-    //private void OnTriggerStay()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.E))
-    //    {
-    //        string GameobjectName = selectorScript.BoxCollider.name;
-    //        selectorScript.FindDoor(GameobjectName);
-    //    }
-    //}
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "EndTrigger")
+        {
+            SceneManager.LoadScene(1);
+        }
+    }
 }
+

@@ -1,6 +1,4 @@
-using UnityEditor;
 using UnityEngine;
-
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
@@ -26,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
         
         if(isGrounded && velocity.y  < 0)
         {
-
             velocity.y = -1.5f;
         }
         float x = Input.GetAxis("Horizontal");
@@ -44,11 +41,7 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
-        controller.Move(velocity * Time.deltaTime);
     }
 
-    private void OnDrawGizmos()
-    {
-        
-    }
+
 }

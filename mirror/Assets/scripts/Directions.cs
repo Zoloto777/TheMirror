@@ -17,7 +17,7 @@ public class Directions : MonoBehaviour
     // code needs to be updated
     public IEnumerator FrontSideDelay()
     {
-        FindObjectOfType<AudioManager>().Play("Beep");
+     //   FindObjectOfType<AudioManager>().Play("Beep");
         yield return new WaitForSeconds(5);
         transform.localRotation = Quaternion.Euler(0, 0, 0);
         Follow.offset.z += -Follow.offset.z + 10;
@@ -26,7 +26,7 @@ public class Directions : MonoBehaviour
 
     public IEnumerator BackSideDelay()
     {
-        FindObjectOfType<AudioManager>().Play("Beep");
+    //    FindObjectOfType<AudioManager>().Play("Beep");
         yield return new WaitForSeconds(5);
         transform.localRotation = Quaternion.Euler(0, 0, 0);
         Follow.offset.z -= Follow.offset.z + 10;
@@ -35,7 +35,7 @@ public class Directions : MonoBehaviour
 
     public IEnumerator RightSideDelay()
     {
-        FindObjectOfType<AudioManager>().Play("Beep");
+   //     FindObjectOfType<AudioManager>().Play("Beep");
         yield return new WaitForSeconds(5);
         transform.localRotation = Quaternion.Euler(0, 90, 0);
         Follow.offset.x += -Follow.offset.x + 10;
@@ -44,7 +44,7 @@ public class Directions : MonoBehaviour
 
     public IEnumerator LeftSideDelay()
     {
-        FindObjectOfType<AudioManager>().Play("Beep");
+    //    FindObjectOfType<AudioManager>().Play("Beep");
         yield return new WaitForSeconds(5);
         transform.localRotation = Quaternion.Euler(0, 90, 0);
         Follow.offset.x -= Follow.offset.x + 10;

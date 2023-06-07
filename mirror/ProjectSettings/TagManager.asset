@@ -14,6 +14,7 @@ TagManager:
   - Test
   - Item-usable
   - ReachTool
+  - Key
   layers:
   - Default
   - TransparentFX
